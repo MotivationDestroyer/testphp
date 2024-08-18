@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/registracia', [UserController::class, 'create']) ->name('registracia');
+Route::post('/registracia', [UserController::class, 'store']) ->name('registracia');

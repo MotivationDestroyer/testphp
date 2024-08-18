@@ -1,5 +1,5 @@
 ﻿<?php
-$url = 'http://tryphp/www/second.php';
+$url = 'http://testphp/www/second.php';
 $email = $_POST['email'];
 $data = array('name' => 'John', 'email' => $email);
 

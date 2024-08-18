@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ru-en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="header-nav-content">
-                    <img class="main-logo" src="images/icons/logo.svg" alt="trena">
+                    <img class="main-logo" src="/images/icons/logo.svg" alt="trena">
                     <div class="header-modal">
                         <button class="modal-open" onclick="openModal()"></button>
                     </div>
@@ -170,7 +170,7 @@
                         кто предлагает фитнес услуги онлайн!
                         Оставайтесь с нами и вы сами увидите,
                         что мы проводим не только онлайн-тренировки.</span>
-                    <button class="submit-training">Записаться</button>
+                    <button class="submit-training" onclick="location.href='/registracia'">>Записаться</button>
                 </div>
                 <img class="footer-trainer" src="images/trainer.png" alt="trainer">
                 <div class="footer-about-virtues">
