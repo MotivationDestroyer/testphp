@@ -7,11 +7,12 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
+use Hash;
 
 /* 
-создал свой контролеер, тут происходит обработка запроса на "ссылку" testphp/registracia
+создал свой контролеер, тут происходит обработка запроса на "ссылку" testphp/registration
 
-Метод create возвращает страницу registracia из view
+Метод create возвращает страницу registration из view
 
 Функция store() принимает объект класса Request, который содержит все данные запроса (например, параметры формы).
 С помощью объекта Request, если мы его укажем в качестве параметра этого метода, то laravel при выполнении этого метода автоматом передаст данные
@@ -25,7 +26,7 @@ class UserController extends Controller
 {
     public function create()
     {
-        return view('registracia');
+        return view('registration');
     }
 
     public function store(Request $request)
@@ -34,7 +35,7 @@ class UserController extends Controller
         $user = User::create([
             'name' => $request -> name,
             'email' => $request -> email,
-            'password' => $request -> password
+            'password' => Hash::make($request->newPassword)
         ]);
         Auth::login($user);
         return redirect(RouteServiceProvider::HOME);

@@ -170,7 +170,7 @@
                         кто предлагает фитнес услуги онлайн!
                         Оставайтесь с нами и вы сами увидите,
                         что мы проводим не только онлайн-тренировки.</span>
-                    <button class="submit-training" onclick="location.href='/registracia'">>Записаться</button>
+                    <button class="submit-training" onclick="location.href='/registration'">>Записаться</button>
                 </div>
                 <img class="footer-trainer" src="images/trainer.png" alt="trainer">
                 <div class="footer-about-virtues">

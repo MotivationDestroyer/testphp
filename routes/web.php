@@ -18,5 +18,5 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/registracia', [UserController::class, 'create']) ->name('registracia');
-Route::post('/registracia', [UserController::class, 'store']) ->name('registracia');
+Route::get('/registration', [UserController::class, 'create']) ->name('registration');
+Route::post('/registration', [UserController::class, 'store']) ->name('registration');
