@@ -6,6 +6,11 @@
     </head>
     <body>
         <h1>Регистрация</h1>
+        <ul>
+            @foreach($errors ->all() as $message)
+            <li>{{$message}}</li>
+            @endforeach
+        </ul>
         <form action="{{route('registration')}}" method="post" novalidate>
             @csrf
             <label for="name">Имя пользователя:</label>

@@ -31,13 +31,36 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request->all());
-        $user = User::create([
-            'name' => $request -> name,
-            'email' => $request -> email,
-            'password' => Hash::make($request->newPassword)
+        //валидация с обработкой ошибок
+        $request->validate([
+            'name' => ['required', 'string'],
+            'email' => ['required', 'string','email'],
+            'password' => ['required']
         ]);
-        Auth::login($user);
-        return redirect(RouteServiceProvider::HOME);
+        try {
+            dd($request->all());
+            $user = User::create([
+                'name' => $request -> name,
+                'email' => $request -> email,
+                'password' => Hash::make($request->newPassword)
+            ]);
+            session(['username'=>$user->name]);
+            Auth::login($user);
+            return redirect(RouteServiceProvider::REGISTERED);
+        } catch (\Exception $th) {
+            if ($th->getCode() == 23000) {
+
+                echo "Пользователь с таким email существует";
+                
+            } else {
+                echo "Программа завершила код с ошибкой: ". $th->getCode();
+            }
+        }
+    }
+    public function deletecookie(Request $request)
+    {
+        $request->session()->flush();
+        return redirect('/');
+        //Удаление данных сессии пользователя(выйти из аккаунта)
     }
 }

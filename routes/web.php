@@ -18,5 +18,11 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/registration', [UserController::class, 'create']) ->name('registration');
-Route::post('/registration', [UserController::class, 'store']) ->name('registration');
+
+Route::get('/registration', [UserController::class, 'create']) -> middleware('guest') -> name('registration');
+Route::post('/registration', [UserController::class, 'store']) -> middleware('guest');
+Route::view('/dashboard', 'dashboard') -> middleware('auth') -> name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard', ['name' => session()->get('username')]);
+});
+Route::get('logout', [UserController::class, 'deletecookie'])->name('logout');
